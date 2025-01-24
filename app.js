@@ -9,51 +9,65 @@ let score = 10;
 scoreSpan.innerText = score;
 
 let word = 'Kuressaare Ametikool!';
-let guessedWord = '';
+let guessedWord = [];
 
-for (let char of word) {
-    if (char.toUpperCase() !== char.toLowerCase()) {
-        guessedWord += '_';
+for ( let char of word ) {
+    if ( char.toUpperCase() != char.toLowerCase() ) {
+        guessedWord.push('_');
     } else {
-        guessedWord += char;
+        guessedWord.push(char);
     }
 }
 
-guessedWordDiv.innerText = guessedWord;
+guessedWordDiv.innerText = guessedWord.join('');
 
-for (let letter of alphabet) {
-    const letterSpan = document.createElement('span');
-    letterSpan.id = letter;
+for ( let letter of alphabet ) {
+    const letterSpan = document.createElement('span', {'id': letter});
     letterSpan.innerText = letter.toUpperCase();
+    
+    letterSpan.addEventListener('click', e => {
+        
+        if ( score && guessedWord.includes('_') ) {
 
-    letterSpan.addEventListener('click', () => {
-        if (!guessedLetters.includes(letter)) {
-            guessedLetters.push(letter);
-
-            if (word.toLowerCase().includes(letter)) {
-                letterSpan.classList.add('correct');
-                let newWord = '';
-                for (let i = 0; i < word.length; i++) {
-                    if (guessedLetters.includes(word[i].toLowerCase()) || word[i] === ' ') {
-                        newWord += word[i];
-                    } else {
-                        newWord += '_';
+            if ( !guessedLetters.includes(letter) ) {
+                
+                guessedLetters.push(letter);
+                
+                if ( word.toLowerCase().includes(letter) ) {
+    
+                    for ( let i = 0; word.toLowerCase().indexOf(letter, i) != -1; i++ ) {
+                        i = word.toLowerCase().indexOf(letter, i);
+                        guessedWord[i] = word[i];
                     }
+    
+                    guessedWordDiv.innerText = guessedWord.join('');
+    
+                    letterSpan.classList.add('correct');
+    
+                } else {
+    
+                    score--;
+                    scoreSpan.innerText = score;
+    
+                    letterSpan.classList.add('incorrect');
+                    
                 }
-                guessedWordDiv.innerText = newWord;
-            } else {
-                score--;
-                scoreSpan.innerText = score;
-                letterSpan.classList.add('incorrect');
+    
             }
 
-            if (score === 0) {
-                alert('Kaotasid Mängu!');
-                alphabetDiv.innerHTML = '';
+            if ( !score ) {
+        
+                console.log('Kaotasid, õige sõna:', word);
+                
+            } else if ( !guessedWord.includes('_') ) {
+        
+                console.log('Võitsid mängu!');
+        
             }
-        }
-    });
+
+        }     
+        
+    });    
 
     alphabetDiv.appendChild(letterSpan);
 }
-
