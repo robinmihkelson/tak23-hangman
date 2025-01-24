@@ -2,7 +2,7 @@ const scoreSpan = document.getElementById('score');
 const guessedWordDiv = document.getElementById('word');
 const alphabetDiv = document.getElementById('alphabet');
 
-const alphabet = 'abdefghijklmnoprsšzžtuvõäöü';
+const alphabet = 'abcdefghijklmnoprsšzžtuvõäöü';
 let guessedLetters = [];
 
 let score = 10;
