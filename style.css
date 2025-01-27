@@ -1,51 +1,86 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
 #container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #score-container {
-    margin-top: 2rem;
-    margin-left: 4rem;
-    font-family: sans-serif;
-    font-size: 2rem;
-    align-self: start;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #444;
+}
+
+#hangmanCanvas {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    background-color: #fff;
 }
 
 #word {
-    margin: 3rem 0;
-    font-family: sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0.5rem;
-    word-spacing: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
 }
 
 #alphabet {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 #alphabet span {
-    display: inline-block;
-    font-size: 2.5rem;
-    border: 1px solid black;
-    width: 2.5rem;
-    text-align: center;
-    margin: 0.1rem;
-    padding: 0.1rem;
+    font-size: 1.5rem;
+    border: 2px solid #333;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 #alphabet span:hover {
-    background-color: beige;
+    background-color: lightgray;
 }
 
 #alphabet span.correct {
-    color: aquamarine;
+    background-color: #4CAF50;
+    color: white;
 }
 
 #alphabet span.incorrect {
-    color: crimson;
+    background-color: #D32F2F;
+    color: white;
+}
+
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#restartButton:hover {
+    background-color: #0056b3;
 }
