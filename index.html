@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Hangman Game</title>
 </head>
 <body>
     
     <div id="container">
+        
+        <h1>Hangman Game</h1>
 
         <div id="score-container">
-            Elud: <span id="score"></span>
+            Lives: <span id="score"></span>
         </div>
 
-        <div id="word">Kuressaare Ametikool</div>
+        <canvas id="hangmanCanvas" width="200" height="250"></canvas>
+
+        <div id="word"></div>
 
         <div id="alphabet"></div>
+
+        <button id="restartButton">Alusta uuesti</button>
+
     </div>
 
     <script src="app.js"></script>
